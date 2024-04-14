@@ -1,104 +1,56 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>贪吃蛇</title>  
-    <style>  
-        #game {  
-            width: 400px;  
-            height: 400px;  
-            border: 1px solid black;  
-            position: relative;  
-            overflow: hidden;  
-        }  
-        .snake, .food {  
-            width: 20px;  
-            height: 20px;  
-            position: absolute;  
-        }  
-        .snake {  
-            background-color: green;  
-        }  
-        .food {  
-            background-color: red;  
-        }  
-    </style>  
-</head>  
-<body>  
-    <div id="game"></div>  
-    <script>  
-        const game = document.getElementById('game');  
-        const boxSize = 20;  
-        const gridSize = 20;  
-        let snake = [{ x: 5, y: 5 }];  
-        let food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };  
-        let dx = 1;  
-        let dy = 0;  
-  
-        function draw() {  
-            game.innerHTML = '';  
-            snake.forEach(segment => {  
-                const segmentElem = document.createElement('div');  
-                segmentElem.style.left = `${segment.x * boxSize}px`;  
-                segmentElem.style.top = `${segment.y * boxSize}px`;  
-                segmentElem.classList.add('snake');  
-                game.appendChild(segmentElem);  
-            });  
-            const foodElem = document.createElement('div');  
-            foodElem.style.left = `${food.x * boxSize}px`;  
-            foodElem.style.top = `${food.y * boxSize}px`;  
-            foodElem.classList.add('food');  
-            game.appendChild(foodElem);  
-        }  
-  
-        function moveSnake() {  
-            const head = { ...snake[0] };  
-            head.x += dx;  
-            head.y += dy;  
-  
-            if (head.x < 0 || head.x >= gridSize || head.y < 0 || head.y >= gridSize) {  
-                alert('游戏结束!');  
-                return;  
-            }  
-  
-            for (let i = 1; i < snake.length; i++) {  
-                if (snake[i].x === head.x && snake[i].y === head.y) {  
-                    alert('游戏结束!');  
-                    return;  
-                }  
-            }  
-  
-            snake.unshift(head);  
-  
-            if (head.x === food.x && head.y === food.y) {  
-                food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };  
-            } else {  
-                snake.pop();  
-            }  
-  
-            draw();  
-            setTimeout(moveSnake, 100);  
-        }  
-  
-        document.addEventListener('keydown', event => {  
-            if (event.key === 'ArrowUp' && dy === 0) {  
-                dx = 0;  
-                dy = -1;  
-            } else if (event.key === 'ArrowDown' && dy === 0) {  
-                dx = 0;  
-                dy = 1;  
-            } else if (event.key === 'ArrowLeft' && dx === 0) {  
-                dx = -1;  
-                dy = 0;  
-            } else if (event.key === 'ArrowRight' && dx === 0) {  
-                dx = 1;  
-                dy = 0;  
-            }  
-        });  
-  
-        draw();  
-        moveSnake();  
-    </script>  
-</body>  
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .download-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .download-item h2 {
+            margin-top: 0;
+        }
+        .download-item p {
+            margin-bottom: 5px;
+        }
+        .download-item a {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .download-item a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>欢迎来到下载站</h1>
+    <div class="download-item">
+        <h2>软件一superxtc</h2>
+        <p>软件一superxtc。</p>
+        <a href="https://down-load.lanrar.com/file/?BWMAPgw9U2IFDAA4BjNdMQQ7AjpT5FbiC4kB4ALkVPJQtVO0C9kOvwf1Ua4HtVzUA9RVflc/AXlVdFc3VWBWOwVgAAgMOFNjBW4AZwZkXW8EZwI1UztWZgs7ATICeFQzUCNTOQthDmIHY1EwB2ZcawNrVWFXLgFzVSJXbFU7VmcFNwBjDH5TNwVhAHkGY11rBHECMlNvVmQLOQEyAjtUYlBpUzMLYQ4/BzRRYgdgXD8DOFVhVzEBNFUxV2NVMVZnBTcAYQxhU2EFagBuBjBdZARrAilTO1YuCyoBcgItVDBQIlNtCzIOZwdgUTMHZ1xrA2BVYlc5ASVVJlc4VWRWMgVjAGoMYFMwBWIAZQZiXWoEbAIzUzlWYwsqAWECMlQiUG1TNQthDmsHYlE3B2JcaANqVWdXPgElVSdXIVV+VmoFNABgDGFTPwViAG4GYl1vBG4CP1MqViELZQF3AmNUY1BgUyoLZw5tB2JRKQdiXGQDalV+VzkBMVVhV3dVbVY7BTgAZw==" download>下载软件一</a>
+    </div>
+    <div class="download-item">
+        <h2>软件二</h2>
+        <p>软件二的描述或简介。</p>
+        <a href="path/to/software2.zip" download>下载软件二</a>
+    </div>
+    <!-- 你可以继续添加更多的下载项 -->
+</body>
 </html>
