@@ -1,58 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>下载站</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-    }
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    .download-list {
-        list-style: none;
-        padding: 0;
-    }
-    .download-item {
-        margin-bottom: 20px;
-        padding: 10px;
-        border: 1px solid #eee;
-        border-radius: 4px;
-    }
-    .download-item h3 {
-        margin: 0;
-    }
-    .download-item a {
-        text-decoration: none;
-        color: #007bff;
-    }
-    .download-item a:hover {
-        text-decoration: underline;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .download-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .download-item h2 {
+            margin-top: 0;
+        }
+        .download-item p {
+            margin-bottom: 5px;
+        }
+        .download-item a {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .download-item a:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
     <h1>欢迎来到下载站</h1>
-    <p>这里是一些可供下载的资源：</p>
-    <ul class="download-list">
-        <li class="download-item">
-            <h3>资源一</h3>
-            <p>这里是关于资源一的简短描述。</p>
-            <a href="download-url-1.zip">下载链接</a>
-        </li>
-        <li class="download-item">
-            <h3>资源二</h3>
-            <p>这里是关于资源二的简短描述。</p>
-            <a href="download-url-2.zip">下载链接</a>
-        </li>
-        <!-- 添加更多资源项 -->
-    </ul>
-</div>
+    <div class="download-item">
+        <h2>剪贴板修复_ClipboardFixer xp模块</h2>
+        <p>修复剪贴板。</p>
+        <a href="apk/ClipboardFixer.apk" download>下载</a>
+    </div>
+    <div class="download-item">
+        <h2>软件二</h2>
+        <p>软件二的描述或简介。</p>
+        <a href="path/to/software2.zip" download>下载</a>
+    </div>
+    <!-- 你可以继续添加更多的下载项 -->
 </body>
 </html>
