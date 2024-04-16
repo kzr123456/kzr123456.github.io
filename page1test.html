@@ -133,9 +133,7 @@
                 .then(data => {
                     // 处理响应数据
                     if (data.code === 200) {
-                        console.log('文件名:', data.name);
-                        console.log('文件大小:', data.filesize);
-                        console.log('直链:', data.downUrl);
+                        console.log(data.downUrl);
                         // 你可以在这里添加更多逻辑，比如将直链显示在页面上或触发其他操作
                     } else {
                         console.error('解析失败:', data.msg);
@@ -148,7 +146,6 @@
         function handleDownloadWithFunction(event, link, password) {
             // 在这里执行你需要的操作，比如记录日志、更新UI等
             console.log('下载前执行的操作，链接:', link, '密码:', password);
-           getLanZouCloudDirectLink(lanzouUrl,password);
             // 触发下载
             const downloadLinkElement = event.target;
             downloadLinkElement.href = getLanZouCloudDirectLink(link, password);
