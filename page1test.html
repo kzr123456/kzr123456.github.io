@@ -114,73 +114,8 @@
       <div class="download-item">
         <h2>re wearbili</h2>
         <p>第三方b站</p>
-        <a href="#" class="download-link" data-use-function="true" data-link="https://www.lanzouw.com/ibF1r1vc84bi" data-password="4qia"data-linkurl="https://k">下载</a>
+        <a href="https://util.huoxinwl.cn/utilApi/lanzou/getDownloadUrl?path= https://www.lanzouw.com/ibF1r1vc84bi&pwd=4qia"download>下载</a>
      </div>
     <!-- 你可以继续添加更多的下载项 -->
-    <script>
-        function getLanZouCloudDirectLink(url, pwd) {
-            // 构造API请求的URL
-            const apiUrl = `https://api.ecylt.top/v1/lanzou_link?url=${encodeURIComponent(url)}&pwd=${encodeURIComponent(pwd)}`;
-
-            // 发送GET请求
-            fetch(apiUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('请求失败: ' + response.status);
-                    }
-                    return response.json(); // 解析JSON响应
-                })
-                .then(data => {
-                    // 处理响应数据
-                    if (data.code === 200) {
-                        console.log(data.downUrl);
-                        // 你可以在这里添加更多逻辑，比如将直链显示在页面上或触发其他操作
-                    } else {
-                        console.error('解析失败:', data.msg);
-                    }
-                })
-                .catch(error => {
-                    console.error('请求发生错误:', error);
-                });
-        }
-        function handleDownloadWithFunction(event, link, password) {
-            // 在这里执行你需要的操作，比如记录日志、更新UI等
-            console.log('下载前执行的操作，链接:', link, '密码:', password);
-            // 触发下载
-            const downloadLinkElement = event.target;
-            downloadLinkElement.href = getLanZouCloudDirectLink(link, password);
-      downloadLinkElement.download='filename.ext';  // 设置下载文件的默认名称
-
-            // 如果需要，可以在这里添加密码验证逻辑
-
-            // 触发点击事件来开始下载
-            downloadLinkElement.click();
-
-            // 阻止默认的链接跳转行为
-            event.preventDefault();
-
-            // 如果需要，在这里执行下载后的操作
-            console.log('下载后执行的操作');
-        }
-
-        // 为所有下载按钮绑定事件监听器
-        const downloadLinks = document.querySelectorAll('.download-link');
-        downloadLinks.forEach(function(linkElement) {
-            linkElement.addEventListener('click', function(event) {
-                const useFunction = linkElement.getAttribute('data-use-function') === 'true';
-                const link = linkElement.getAttribute('data-link');
-                const password = linkElement.getAttribute('data-password');
-                const linkurl = linkElement.getAttribute('data-linkurl');
-
-                if (useFunction) {
-                    // 如果需要调用函数，则调用 handleDownloadWithFunction
-                    handleDownloadWithFunction(event, link, password);
-                } else {
-                    // 如果不需要调用函数，则直接设置 href 并触发下载
-                    linkElement.href = linkurl;
-                  //  linkElement.download = 'filename.ext'; // 设置下载文件的默认名称
-                    linkElement.click();
-                    event.preventDefault();
-    </script>
 </body>
 </html>
