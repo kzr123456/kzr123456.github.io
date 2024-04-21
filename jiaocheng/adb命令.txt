@@ -1,0 +1,120 @@
+
+一.adb命令
+----------------------------------
+1.adb start-server/adb kill-server
+当你的电脑连接多于一个设备时,或者adb shell报错可输入adb kill-server,然后adb start-server
+----------------------------------
+2.adb tcpip
+作用:给设备设置端口
+用法:adb tcpip (四个数字),例如adb tcpip 5555把端口设为5555
+----------------------------------
+3.adb connect
+作用:用WiFi连接设备(需要设置端口)
+用法:adb connect (你的设备IP):(端口), 例如adb connect 192.168.1.112:5666
+输出connect to 你的IP即可
+----------------------------------
+4.adb push
+作用:把电脑的东西传输到设备
+用法:adb push *.* /路径/,例如adb push 1.apk /sdcard/,把1.apk导入至sdcard
+----------------------------------
+5.adb pull
+作用:把设备的东西传输到电脑
+用法:adb pull /路径/*.*,例如adb pull /sdcard/1.apk,把1.apk导出到电脑
+----------------------------------
+6.adb root
+作用:获取root权限
+用法:adb root
+----------------------------------
+7.adb remount
+作用:把/挂载为读写
+用法:
+adb root
+adb remount
+----------------------------------
+8.adb shell
+作用:进入设备终端
+用法:
+adb shell
+msm8909w:/$
+----------------------------------
+9.adb shell su
+作用:在shell中获取root权限
+用法:
+adb shell
+msm8909w:/$su
+msm8909w:/#
+----------------------------------
+10.adb shell mount -o rw,remount /路径
+作用:把指定路径挂载为读写(需先获取root权限)
+用法:
+adb shell
+msm8909w:/$su
+msm8909w:/#mount -o rw,remount /system
+msm8909w:/#
+----------------------------------
+11.adb shell cd /路径
+作用:转到路径
+用法:
+adb shell
+msm8909w:/$cd /sdcard
+msm8909w:/sdcard$
+----------------------------------
+12.adb shell pm list package
+作用:列出所有应用包名,在后面加入-s(只看系统);-3(只看第三方)
+用法:
+adb shell
+msm8909w:/$pm list package -3
+com.cloud.music
+bin.mt.plus
+in.mfile
+----------------------------------
+13.adb shell mkdir/rmdir /文件夹
+作用:创建/删除文件夹
+用法:
+adb shell
+msm8909w:/$cd /sdcard/DCIM
+msm8909w:/sdcard/DCIM$rmdir /Weichat
+msm8909w:/sdcard/DCIM$mkdir /Video
+----------------------------------
+14.adb shell mv /路径/*.* /路径/*.*
+作用:移动文件到指定路径
+用法:
+adb shell
+msm8909w:/$cd /sdcard/data
+msm8909w:/sdcard/data$mv /sdcard/1.apk /sdcard/data/1.apk
+----------------------------------
+15.adb shell pm install /路径/*.apk
+作用:安装设备目录下的程序
+用法:
+adb shell
+msm8909w:/$pm install -g /sdcard/1.apk
+----------------------------------
+16.adb install *.apk
+作用:安装电脑目录下的程序
+用法:adb install 1.apk
+----------------------------------
+17.adb shell pm uninstall 应用包名
+作用:删除程序(加入加上--user 0就可以删除系统应用)
+用法:
+adb shell
+msm8909w:/$pm uninstall --user 0 com.xtc.systemupdate_i11
+----------------------------------
+18.adb uninstall 应用包名
+作用:删除程序
+用法:adb uninstall com.test
+----------------------------------
+19.adb reboot
+作用:重启/重启至...
+用法:
+adb reboot(重启至系统)
+adb reboot edl(重启至9008)
+adb reboot bootloader(重启至fastboot)
+adb reboot recovery(重启至rec)
+----------------------------------
+20.adb devices
+作用:检查连接
+用法:adb devices
+----------------------------------
+21.adb shell ifconfig wlan0 手表IP地址查询
+----------------------------------
+21.scrcpy.exe 投屏
