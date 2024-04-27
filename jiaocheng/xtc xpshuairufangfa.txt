@@ -1,0 +1,7 @@
+先确保您设备已root
+首先到模块区下载CaremeOS可用的EDXP框架并解压
+1.安装
+安装manager.apk，完成已后会发现显示xposed框架未激活先要不管
+2.激活
+打开magisk找到模块列表依次刷入riru.zip,edxp.zip重启后打开edxposed installer就会发现显示xposed框架已激活
+这样您就成功刷入xp框架了。
